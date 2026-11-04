@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080d18">
+  <title>VEYZEN OS</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="splash" class="splash">
+    <div class="splash-mark">V<span>⚡</span></div>
+    <div class="splash-name">VEYZEN <b>OS</b></div>
+    <div class="loading-track"><i></i></div>
+    <div class="credit">Made With Love By<br><strong>Sensei And Veyzen</strong></div>
+  </div>
+
+  <section id="welcome" class="welcome hidden">
+    <div class="brand-mini">V<span>⚡</span></div>
+    <p class="eyebrow">YOUR PERSONAL DIGITAL SPACE</p>
+    <h1>Welcome to<br><span>VEYZEN OS</span></h1>
+    <p class="muted">Your dashboard, study space and gaming hub — in one place.</p>
+    <button class="primary" id="guestBtn">Continue as Guest</button>
+    <button class="secondary" id="loginBtn">Login / Create account</button>
+    <p class="tiny">Guest mode works on this device. Account features need a secure backend setup.</p>
+  </section>
+
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div><div class="top-kicker">WELCOME BACK</div><div class="top-title" id="helloName">Raikuro</div></div>
+      <button class="avatar" id="profileBtn">RV</button>
+    </header>
+
+    <aside id="drawer" class="drawer">
+      <div class="drawer-head"><div class="brand-mini">V<span>⚡</span></div><b>VEYZEN OS</b><button id="closeDrawer" class="icon-btn">×</button></div>
+      <button data-page="home">🏠 Dashboard</button>
+      <button data-page="study">📚 Study space</button>
+      <button data-page="gaming">🎮 Gaming library</button>
+      <button data-page="friends">💬 Friends chat</button>
+      <button data-page="planner">🗓️ Planner</button>
+      <button data-page="settings">⚙️ Settings</button>
+      <div class="drawer-note">Version 1.0 • Made with care</div>
+    </aside>
+    <div id="scrim" class="scrim"></div>
+
+    <main id="content" class="content">
+      <section class="page active" id="page-home">
+        <div class="hero-card">
+          <div class="hero-orb">V</div>
+          <p class="eyebrow">VEYZEN SIGNATURE</p>
+          <h1>Build your<br>own universe.</h1>
+          <p class="muted">Everything you need, one tap away.</p>
+          <div class="hero-bottom"><span class="status-dot"></span> SYSTEM READY <span id="dateText"></span></div>
+        </div>
+        <div class="section-heading"><h2>Quick access</h2><span>YOUR SPACE</span></div>
+        <div class="grid">
+          <button class="tile" data-page="study"><span>📚</span><b>Study</b><small>Notes & focus</small></button>
+          <button class="tile" data-page="gaming"><span>🎮</span><b>Gaming</b><small>Your game hub</small></button>
+          <button class="tile" data-page="friends"><span>💬</span><b>Friends</b><small>Chat space</small></button>
+          <button class="tile" data-page="planner"><span>🗓️</span><b>Planner</b><small>Plan your day</small></button>
+        </div>
+        <div class="section-heading"><h2>At a glance</h2><span>DEVICE</span></div>
+        <div class="info-row"><div class="info-card"><small>LOCAL MODE</small><b>Available</b><span>Notes and settings work offline</span></div><div class="info-card"><small>CONNECTION</small><b id="networkStatus">Checking…</b><span>Internet status</span></div></div>
+      </section>
+
+      <section class="page" id="page-study">
+        <div class="page-title"><p class="eyebrow">LEARN & CREATE</p><h1>Study space 📚</h1><p class="muted">Your notes are saved on this device.</p></div>
+        <label class="field-label" for="noteTitle">Note title</label><input id="noteTitle" class="input" placeholder="e.g. Java visibility modifiers">
+        <label class="field-label" for="noteBody">Your note</label><textarea id="noteBody" class="input textarea" placeholder="Write something worth remembering…"></textarea>
+        <button class="primary" id="saveNote">Save note</button>
+        <div class="section-heading"><h2>Saved notes</h2><span id="noteCount">0 NOTES</span></div>
+        <div id="notesList" class="stack"></div>
+      </section>
+
+      <section class="page" id="page-gaming">
+        <div class="page-title"><p class="eyebrow">PLAY ZONE</p><h1>Gaming hub 🎮</h1><p class="muted">A personal library for the games you enjoy.</p></div>
+        <div class="game-card"><span>⛏️</span><div><b>Minecraft</b><small>Sandbox • Add to your collection</small></div><button class="add-game" data-game="Minecraft">＋</button></div>
+        <div class="game-card"><span>🧱</span><div><b>Roblox</b><small>Experiences • Add to your collection</small></div><button class="add-game" data-game="Roblox">＋</button></div>
+        <div class="game-card"><span>🎯</span><div><b>Call of Duty</b><small>Action • Add to your collection</small></div><button class="add-game" data-game="Call of Duty">＋</button></div>
+        <div class="section-heading"><h2>My collection</h2><span>LOCAL</span></div><div id="gamesList" class="stack"></div>
+      </section>
+
+      <section class="page" id="page-friends">
+        <div class="page-title"><p class="eyebrow">STAY CONNECTED</p><h1>Friends 💬</h1><p class="muted">A dedicated space for conversations.</p></div>
+        <div class="notice"><b>Chat is not connected yet.</b><p>Real-time messaging, friend requests and group chats need a secure online backend and user accounts. This starter keeps the chat area as a safe placeholder until Firebase is configured.</p></div>
+        <div class="chat-preview"><div class="chat-avatar">V</div><div><b>Your conversations will appear here</b><small>Sign-in and backend setup are the next step.</small></div></div>
+      </section>
+
+      <section class="page" id="page-planner">
+        <div class="page-title"><p class="eyebrow">MAKE IT COUNT</p><h1>Planner 🗓️</h1><p class="muted">A simple offline task list.</p></div>
+        <div class="task-entry"><input id="taskInput" class="input" placeholder="Add a task…"><button class="primary" id="addTask">Add</button></div>
+        <div id="tasksList" class="stack"></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-title"><p class="eyebrow">MAKE IT YOURS</p><h1>Settings ⚙️</h1><p class="muted">Choose how VEYZEN OS looks and feels.</p></div>
+        <div class="setting-group"><h3>Appearance</h3><p class="muted">Choose a theme. System Default follows your device appearance.</p>
+          <div class="theme-list">
+            <button data-theme="cyberpunk">A · Cyberpunk <span>Neon blue & purple</span></button>
+            <button data-theme="minimal">B · Minimalist <span>Clean monochrome</span></button>
+            <button data-theme="anime">C · Anime-inspired <span>Blue energy accents</span></button>
+            <button data-theme="veyzen">D · Veyzen Signature <span>Electric blue identity</span></button>
+            <button data-theme="custom">E · Custom <span>Choose your accent colour</span></button>
+            <button data-theme="system">📱 System Default <span>Follow Android settings</span></button>
+          </div>
+          <label class="field-label" for="accentPicker">Custom accent colour</label><input type="color" id="accentPicker" value="#38bdf8">
+        </div>
+        <div class="setting-group"><h3>Account</h3><p id="accountLabel" class="muted">Currently using Guest Mode on this device.</p><button class="secondary" id="switchUser">Return to welcome screen</button></div>
+        <div class="setting-group"><h3>About</h3><p class="muted">VEYZEN OS v1.0<br>Made With Love By Sensei And Veyzen ❤️</p></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item selected" data-page="home"><span>⌂</span>Home</button>
+      <button class="nav-item" data-page="study"><span>▤</span>Study</button>
+      <button class="nav-item" data-page="gaming"><span>▣</span>Games</button>
+      <button class="nav-item" data-page="friends"><span>♡</span>Friends</button>
+      <button class="nav-item" data-page="settings"><span>⚙</span>Settings</button>
+    </nav>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

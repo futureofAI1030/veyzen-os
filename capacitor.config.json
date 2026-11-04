@@ -1,0 +1,6 @@
+{
+  "appId": "com.veyzen.os",
+  "appName": "VEYZEN OS",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
