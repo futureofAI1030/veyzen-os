@@ -1,4 +1,3 @@
-
 name: Build VEYZEN OS APK
 
 on:
@@ -20,6 +19,9 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -28,23 +30,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Add Android platform
-        run: npx cap add android
+      - name: Build web app
+        run: npm run build
 
-      - name: Sync app
+      - name: Add Android platform (if not already present)
+        run: npx cap add android || true
+
+      - name: Sync Capacitor
         run: npx cap sync android
+
+      - name: Make Gradlew executable
+        working-directory: android
+        run: chmod +x gradlew
 
       - name: Build APK
         working-directory: android
-        
-        run: ./gradlew assembleDebug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: veyzen-os-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
-
         run: ./gradlew assembleDebug
 
       - name: Upload APK
